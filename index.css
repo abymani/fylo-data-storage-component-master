@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root {
+    /* ### Primary */
+
+--Gradient: #ffa399 to #ff4d97;
+
+/* ### Neutral */
+
+--Pale-Blue: hsl(243, 100%, 93%);
+--Grayish0-Blue: hsl(229, 7%, 55%);
+--Dark-Blue: hsl(228, 56%, 26%);
+--Very-Dark-Blue: hsl(229, 57%, 11%);
+
+/* ## Typography
+
+### Body Copy */
+
+--Font-size: 14px;
+--ff-raleway: 'Raleway', sans-serif;
+--fw-regular:400;
+--fw-bold:700;
+}
+
+* {
+    font-family: var(--ff-raleway);
+    font-weight: var(--fw-regular);
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image:url(./images/bg-mobile.png);
+    color: white;
+}
+    main {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    main >div {
+        border-radius: 15px;
+        background-color: var(--Dark-Blue);
+        padding: 2.5rem;
+    }
+    
+        .fylo {
+            border-top-right-radius: 100px;     
+        }
+            .fylo >img {
+                width: 140px;
+            }
+        .file-folder {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+
+        }
+        .file-folder a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: var(--Very-Dark-Blue);
+            border-radius:8px;
+        }
+    .slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom:4rem;
+        position: relative;
+    }
+        .slider-container label {
+            font-size: var(--Font-size);
+            color: hsl(243, 100%, 93%,0.8);
+        }
+        .range-slider {
+            width: 100%;
+        }
+            .slider-container label span{
+                color: var(--Pale-Blue);
+                font-weight: var(--fw-bold);
+            }
+      
+            .slider {
+                position: relative;
+                width: 100%;
+                -webkit-appearance: none;
+                border-radius: 12px;
+                border: 3px solid hsl(229, 57%, 11%);
+                height: 1.2rem;
+                background:linear-gradient(90deg,hsl(6, 100%, 80%) 0% ,hsl(335, 100%, 65%) 81% , hsl(229, 57%, 11%) 81%, hsl(229, 57%, 11%) 100%);
+            }
+                .slider::-webkit-slider-runnable-track {
+                    -webkit-appearance: none;         
+                    padding: 2px;
+                }
+                .slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 0.9rem;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    border: 2px solid hsl(335, 100%, 65%);
+                    cursor: ew-resize;
+                    background-color: white;
+                }
+                /** FF*/
+                
+                input[type="range"]::-moz-range-progress {
+                    background:linear-gradient(90deg,hsl(6, 100%, 80%) 0% ,hsl(335, 100%, 65%) 81% , hsl(229, 57%, 11%) 81%, hsl(229, 57%, 11%) 100%);
+                }
+                
+            .slider::after {
+                content: "1000 GB";
+                position: absolute;
+                color: var(--Pale-Blue);
+                font-size: var(--Font-size);
+                right: 0rem;
+                top:1.5rem
+            }
+            .slider::before {
+                content: "0 GB";
+                position: absolute;
+                color: var(--Pale-Blue);
+                font-size: var(--Font-size);
+                left: 0rem;
+                top:1.5rem
+            }
+        .range-slider:hover .tooltip,.range-slider:active .tooltip 
+        .range-slider:focus .tooltip,.range-slider:visited
+        {
+            visibility: visible;
+        }
+        .tooltip {
+            visibility: hidden;
+            padding: 1rem;
+            position: absolute;
+            bottom: -2rem;
+            left: 30%;
+            display: flex;
+            align-items: center;
+            background-color: whitesmoke;
+            color: var(--Very-Dark-Blue);
+            border-radius: 12px;
+
+        }
+            .tooltip .gb-left {
+                font-weight: var(--fw-bold);
+                font-size: 2rem;
+                margin-right: 0.8rem;
+            }
+            .tooltip .gb-text {
+                color: var(--Grayish0-Blue);
+                font-size: 0.8;
+            }
+
+  
+  
+@media screen and (min-width:500px)  {
+    main{
+        width: 70%;
+    }
+    .tooltip .gb-left {
+
+        font-size: clamp(1rem,4vw,20.5rem);
+        margin-right: 0.8rem;
+    }
+    .tooltip .gb-text {
+
+        font-size: clamp(0.7rem,2vw,1rem);
+    }
+}
+@media screen and (min-width:800px) {
+    body {
+        background-color: var(--Very-Dark-Blue);
+        background-image:url(./images/bg-desktop.png);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+    }
+        main {
+            width: 70%;
+            min-width:50rem;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+            gap:2rem
+        }
+         main >div {
+            padding:3rem;
+         }
+         .fylo {
+            width: 40%;
+         }
+                .file-folder a img {
+                    width: 1.5rem;
+                }
+        .slider-container {
+            width:60%
+        }
+    .tooltip {
+    right: 3.5rem;
+    padding: clamp(0.5rem,0.7vw,1.2rem);
+    left: auto;
+    bottom: 8rem;
+    border-bottom-right-radius: 0;
+    z-index: 1000;
+    }
+        .tooltip::after {
+            content: " ";
+            position: absolute;
+            top: 50%; /* At the bottom of the tooltip */
+            right: 0;
+            margin-left: -5px;
+            border-width: 2rem;
+            border-style: solid;
+            border-color:  transparent whitesmoke transparent  transparent ;
+
+        }
+}
